@@ -2,37 +2,44 @@
 #include <iostream>
 using namespace std;
 
-bool Temperature_within_Limit(float temperature)
+bool result = true;
+void Temperature_within_Limit(float temperature)
 {
   if(temperature < 0 || temperature > 45) {
     cout << "Temperature out of range!\n";
-    return false;
+    result = false;
+    
   }
-  return true;
+  
 }
-bool SOC_within_Limit(float soc)
+void SOC_within_Limit(float soc)
 {
   if(soc < 20 || soc > 80) {
     cout << "State of Charge out of range!\n";
-    return false;
+    result = false;
   }
-  return true;
+  
 }
-bool Check_ChargeRate_Threshold(float chargeRate)
+void Check_ChargeRate_Threshold(float chargeRate)
 {
   if(chargeRate > 0.8) {
     cout << "Charge Rate out of range!\n";
+    result = false;
+  }
+  
+}
+bool batteryIsOk(float temperature, float soc, float chargeRate) {
+  
+  Temperature_within_Limit(temperature);
+  SOC_within_Limit(soc);
+  Check_ChargeRate_Threshold(chargeRate);
+
+  if(result == false)
+  {
+    result = true;
     return false;
   }
   return true;
-}
-bool batteryIsOk(float temperature, float soc, float chargeRate) {
-
-  if((Temperature_within_Limit(temperature))&&(SOC_within_Limit(soc))&&(Check_ChargeRate_Threshold(chargeRate)))
-  {
-    return true;
-  }
-  return false;
 }
 
 int main() {
