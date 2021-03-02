@@ -22,7 +22,7 @@ void SOC_within_Limit(float soc)
 }
 void Check_ChargeRate_Threshold(float chargeRate)
 {
-  if(chargeRate > 0.8) {
+  if(chargeRate < 0 || chargeRate > 0.8) {
     cout << "Charge Rate out of range!\n";
     result = false;
   }
@@ -45,4 +45,5 @@ bool batteryIsOk(float temperature, float soc, float chargeRate) {
 int main() {
   assert(batteryIsOk(25, 70, 0.7) == true);
   assert(batteryIsOk(50, 85, 0) == false);
+  assert(batteryIsOk(50, 85, -0.5) == false);
 }
