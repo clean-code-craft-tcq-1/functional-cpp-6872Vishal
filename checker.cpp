@@ -2,15 +2,11 @@
 #include <iostream>
 using namespace std;
 
-#define Temperature_Min 0
-#define Temperature_Max 45
-#define SOC_Min 20
-#define SOC_Max 80
-#define ChargeRate_Min 0.0
-#define ChargeRate_Max 0.8
-
 enum BMS_Parameters {Temperature,Sate_of_Charge,Charge_Rate};
 const char* BMS_Parameters_Name[] = { "Temperature" ,"SOC" , "ChargeRate" };
+
+enum BMS_Parameters_Min_Value {Temperature_Min = 0,  SOC_Min = 20, ChargeRate_Min = 0.0};
+enum BMS_Parameters_Max_Value {Temperature_Max = 45, SOC_Max = 80, ChargeRate_Max = 0.8};
 
 class BMS{
   private:
