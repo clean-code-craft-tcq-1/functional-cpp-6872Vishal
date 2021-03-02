@@ -27,18 +27,11 @@ bool Check_ChargeRate_Threshold(float chargeRate)
   return true;
 }
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
-  int para = 0;
-  switch(para)
+
+  if((Temperature_within_Limit(temperature))&&(SOC_within_Limit(soc))&&(Check_ChargeRate_Threshold(chargeRate)))
   {
-    case 0 : if(!Temperature_within_Limit(temperature)) { break; }
-    case 1 : if(!SOC_within_Limit(soc)) { break; }
-    case 2 : if(!Check_ChargeRate_Threshold(chargeRate)) { break; }
-    default : return true;    
+    return true;
   }
-//   if((Temperature_within_Limit(temperature))&&(SOC_within_Limit(soc))&&(Check_ChargeRate_Threshold(chargeRate)))
-//   {
-//     return true;
-//   }
   return false;
 }
 
