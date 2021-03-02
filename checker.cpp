@@ -1,17 +1,19 @@
 #include <assert.h>
 #include <iostream>
 using namespace std;
-
+enum BMS_Parameters = {temp,sate_of_charge,charge_rate};
+char *BMS_Parameters_Name = { "Temperature" ,"SOC" , "ChargeRate" };
 class BMS{
   private:
     bool BMS_OK;
   public:
     BMS()
     { BMS_OK = true; }
-    void Check_Parameters(float parameter,float max,float min)
+    void Check_Parameters(float parameter,float max,float min,BMS_Parameters name)
     {
       if(parameter < min || parameter > max)
       {
+        cout <<BMS_Parameters_Name[name]<<" is out of range! \n";
         BMS_OK = false;
       } 
     }
@@ -49,9 +51,9 @@ class BMS{
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
   
   class BMS class_obj;
-  class_obj.Check_Parameters(temperature,45,0);
-  class_obj.Check_Parameters(soc,80,20);
-  class_obj.Check_Parameters(chargeRate,0.8,0);
+  class_obj.Check_Parameters(temperature,45,0,temp);
+  class_obj.Check_Parameters(soc,80,20,sate_of_charge);
+  class_obj.Check_Parameters(chargeRate,0.8,0,charge_rate);
 //   Temperature_within_Limit(temperature);
 //   SOC_within_Limit(soc);
 //   Check_ChargeRate_Threshold(chargeRate);
