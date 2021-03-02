@@ -21,29 +21,29 @@ class BMS{
   }
   ~BMS();
 };
-void Temperature_within_Limit(float temperature)
-{
-  if(temperature < 0 || temperature > 45) {
-    cout << "Temperature out of range!\n";
-    result = false;
+// void Temperature_within_Limit(float temperature)
+// {
+//   if(temperature < 0 || temperature > 45) {
+//     cout << "Temperature out of range!\n";
+//     result = false;
     
-  }
+//   }
   
-}
-void SOC_within_Limit(float soc)
-{
-  if(soc < 20 || soc > 80) {
-    cout << "State of Charge out of range!\n";
-    result = false;
-  }
+// }
+// void SOC_within_Limit(float soc)
+// {
+//   if(soc < 20 || soc > 80) {
+//     cout << "State of Charge out of range!\n";
+//     result = false;
+//   }
   
-}
-void Check_ChargeRate_Threshold(float chargeRate)
-{
-  if(chargeRate < 0 || chargeRate > 0.8) {
-    cout << "Charge Rate out of range!\n";
-    result = false;
-  }
+// }
+// void Check_ChargeRate_Threshold(float chargeRate)
+// {
+//   if(chargeRate < 0 || chargeRate > 0.8) {
+//     cout << "Charge Rate out of range!\n";
+//     result = false;
+//   }
   
 }
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
@@ -62,7 +62,7 @@ bool batteryIsOk(float temperature, float soc, float chargeRate) {
 //     return false;
 //   }
 //   return true;
-  return Send_BMS_Result();
+  return class_obj.Send_BMS_Result();
 }
 
 int main() {
