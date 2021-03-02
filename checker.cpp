@@ -1,7 +1,7 @@
 #include <assert.h>
 #include <iostream>
 using namespace std;
-enum BMS_Parameters = {temp,sate_of_charge,charge_rate};
+enum BMS_Parameters {temp,sate_of_charge,charge_rate};
 char *BMS_Parameters_Name = { "Temperature" ,"SOC" , "ChargeRate" };
 class BMS{
   private:
