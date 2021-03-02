@@ -19,7 +19,7 @@ class BMS{
   {
     return BMS_OK;
   }
-  ~BMS();
+  
 };
 // void Temperature_within_Limit(float temperature)
 // {
