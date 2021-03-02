@@ -45,7 +45,7 @@ class BMS{
 //     result = false;
 //   }
   
-}
+//}
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
   
   class BMS class_obj;
