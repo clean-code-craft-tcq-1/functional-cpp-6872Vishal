@@ -1,8 +1,17 @@
 #include <assert.h>
 #include <iostream>
 using namespace std;
-enum BMS_Parameters {temp,sate_of_charge,charge_rate};
+
+#define Temperature_Min 0
+#define Temperature_Max 45
+#define SOC_Min 20
+#define SOC_Max 80
+#define ChargeRate_Min 0.0
+#define ChargeRate_Max 0.8
+
+enum BMS_Parameters {Temperature,Sate_of_Charge,Charge_Rate};
 const char* BMS_Parameters_Name[] = { "Temperature" ,"SOC" , "ChargeRate" };
+
 class BMS{
   private:
     bool BMS_OK;
@@ -23,47 +32,12 @@ class BMS{
   }
   
 };
-// void Temperature_within_Limit(float temperature)
-// {
-//   if(temperature < 0 || temperature > 45) {
-//     cout << "Temperature out of range!\n";
-//     result = false;
-    
-//   }
-  
-// }
-// void SOC_within_Limit(float soc)
-// {
-//   if(soc < 20 || soc > 80) {
-//     cout << "State of Charge out of range!\n";
-//     result = false;
-//   }
-  
-// }
-// void Check_ChargeRate_Threshold(float chargeRate)
-// {
-//   if(chargeRate < 0 || chargeRate > 0.8) {
-//     cout << "Charge Rate out of range!\n";
-//     result = false;
-//   }
-  
-//}
-bool batteryIsOk(float temperature, float soc, float chargeRate) {
-  
-  class BMS class_obj;
-  class_obj.Check_Parameters(temperature,45,0,temp);
-  class_obj.Check_Parameters(soc,80,20,sate_of_charge);
-  class_obj.Check_Parameters(chargeRate,0.8,0,charge_rate);
-//   Temperature_within_Limit(temperature);
-//   SOC_within_Limit(soc);
-//   Check_ChargeRate_Threshold(chargeRate);
 
-//   if(result == false)
-//   {
-//     result = true;
-//     return false;
-//   }
-//   return true;
+bool batteryIsOk(float temperature, float soc, float chargeRate) {
+  class BMS class_obj;
+  class_obj.Check_Parameters(temperature,Temperature_Max,Temperature_Min,Temperature);
+  class_obj.Check_Parameters(soc,SOC_Max,SOC_Min,Sate_of_Charge);
+  class_obj.Check_Parameters(chargeRate,ChargeRate_Max,ChargeRate_Min,Charge_Rate);
   return class_obj.Send_BMS_Result();
 }
 
