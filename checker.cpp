@@ -8,7 +8,7 @@ using namespace std;
 #define SOC_Max  80
 #define ChargeRate_Min  0.0
 #define ChargeRate_Max  0.8
-
+/* BMS : Battery Management System */
 enum BMS_Parameters {Temperature,Sate_of_Charge,Charge_Rate};
 const char* BMS_Parameters_Name[] = { "Temperature" ,"SOC" , "ChargeRate" };
 
@@ -17,11 +17,13 @@ const char* BMS_Parameters_Name[] = { "Temperature" ,"SOC" , "ChargeRate" };
 
 class BMS{
   private:
+  // Variable to verify BMS OK or Not_OK //
     bool BMS_OK;
   public:
     BMS()
     { BMS_OK = true; }
-    void Check_Parameters(float parameter,float max,float min,BMS_Parameters name)
+    /* Verifies the given Parameter is within limits or not */
+    void Verify_Parameter(float parameter,float max,float min,BMS_Parameters name)
     {
       if(parameter < min || parameter > max)
       {
@@ -35,12 +37,12 @@ class BMS{
   }
   
 };
-
+/* Returns the Battery state : OK or Not_OK */
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
   class BMS class_obj;
-  class_obj.Check_Parameters(temperature,Temperature_Max,Temperature_Min,Temperature);
-  class_obj.Check_Parameters(soc,SOC_Max,SOC_Min,Sate_of_Charge);
-  class_obj.Check_Parameters(chargeRate,ChargeRate_Max,ChargeRate_Min,Charge_Rate);
+  class_obj.Verify_Parameter(temperature,Temperature_Max,Temperature_Min,Temperature);
+  class_obj.Verify_Parameter(soc,SOC_Max,SOC_Min,Sate_of_Charge);
+  class_obj.Verify_Parameter(chargeRate,ChargeRate_Max,ChargeRate_Min,Charge_Rate);
   return class_obj.Send_BMS_Result();
 }
 
