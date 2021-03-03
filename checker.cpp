@@ -25,11 +25,20 @@ class BMS{
     /* Verifies the given Parameter is within limits or not */
     void Verify_Parameter(float parameter,float max,float min,BMS_Parameters name)
     {
-      if(parameter < min || parameter > max)
+      if(parameter < min)
       {
-        cout <<BMS_Parameters_Name[name]<<" is out of range! \n";
+        cout <<BMS_Parameters_Name[name]<<" is below the Minimum Thershold! \n";
         BMS_OK = false;
-      } 
+      }
+      else if(parameter > max)
+      {
+        cout <<BMS_Parameters_Name[name]<<" is above the Maximum Thershold! \n";
+        BMS_OK = false;
+      }
+      else
+      {
+        //do nothing 
+      }
     }
   bool Send_BMS_Result()
   {
